@@ -1,6 +1,6 @@
 # 🚗 Estacionamento
 
-Este é um simples sistema de estacionamento implementado em C#. Ele permite a adição, remoção e listagem de veículos estacionados, calculando o valor a ser pago com base no tempo de estacionamento.
+Este é um sistema simples de estacionamento implementado em C#. Ele permite a adição, remoção e listagem de veículos estacionados, calculando o valor a ser pago com base no tempo de estacionamento.
 
 ## 🚩 Pré-requisitos
 
@@ -18,6 +18,23 @@ Certifique-se de ter o ambiente de desenvolvimento C# configurado em sua máquin
 - **Remover Veículo:** Remove um veículo do estacionamento, solicitando ao usuário a placa do veículo a ser removido e calculando o valor a ser pago com base no tempo de estacionamento.
 - **Listar Veículos:** Lista todos os veículos atualmente estacionados, mostrando sua placa e hora de entrada.
 
-## 🤝 Contribuindo
+## Contribuição
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue para discutir novos recursos ou enviar uma solicitação de pull request.
+Se você deseja contribuir para este projeto, siga estas etapas:
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua contribuição.
+3. Faça suas alterações.
+4. Envie um pull request explicando suas mudanças.
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
+
+## Autor
+
+- [Lucas Sousa](https://github.com/JoseLSousa)
+
+---
+
+ 👋 Obrigado por visitar meu repositório, caso tenha interesse, visite meu GitHub.

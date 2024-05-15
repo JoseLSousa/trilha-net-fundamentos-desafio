@@ -69,7 +69,6 @@ namespace DesafioFundamentos.Models
                         int QuantidadeMinutos = horaAtual.Minute - horaEntradaVeiculo.Minute;
                         Console.WriteLine("bilada");
                         Console.WriteLine($"O veículo passou {QuantidadeHoras} Hora(s) e {QuantidadeMinutos} Minuto(s) estacionado");
-                        Console.WriteLine($"Cliente irá pagar R$: " + (precoInicialCentavos / 100.0).ToString("F2"));
                         Console.WriteLine($"O Cliente irá pagar R$: " + ((precoInicialCentavos + (precoPorHoraCentavos * QuantidadeHoras)) / 100).ToString("F2"));
 
                     }
@@ -77,7 +76,7 @@ namespace DesafioFundamentos.Models
                     {
                         int QuantidadeHoras = horaAtual.Hour - horaEntradaVeiculo.Hour;
                         int QuantidadeMinutos = horaAtual.Minute - horaEntradaVeiculo.Minute;
-                        Console.WriteLine($"O veículo passou {QuantidadeHoras}Hora(s) e {QuantidadeMinutos} Minuto(s) estacionado");
+                        Console.WriteLine($"O veículo passou {QuantidadeHoras} Hora(s) e {QuantidadeMinutos} Minuto(s) estacionado");
                         Console.WriteLine($"Cliente irá pagar R$: " + (precoInicialCentavos / 100.0).ToString("F2"));
                     }
 
