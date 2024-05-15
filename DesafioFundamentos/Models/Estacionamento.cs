@@ -1,21 +1,20 @@
+using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 
 namespace DesafioFundamentos.Models
 {
     public class Estacionamento
     {
-        List<Tuple<int, string, string>> vagas = new List<Tuple<int, string, string>>();
-
-        string horaInicial = Convert.ToString(DateTime.Now.Hour + ":" + DateTime.Now.Minute);
-
-        private decimal precoInicial = 0;
-        private decimal precoPorHora = 0;
+        List<Tuple<int, string, TimeOnly>> vagas = new List<Tuple<int, string, TimeOnly>>();
+        TimeOnly horaAtual = TimeOnly.FromDateTime(DateTime.Now);
+        private int precoInicialCentavos = 0;
+        private int precoPorHoraCentavos = 0;
 
 
-        public Estacionamento(decimal precoInicial, decimal precoPorHora)
+        public Estacionamento(int precoInicialCentavos, int precoPorHoraCentavos)
         {
-            this.precoInicial = precoInicial;
-            this.precoPorHora = precoPorHora;
+            this.precoInicialCentavos = precoInicialCentavos;
+            this.precoPorHoraCentavos = precoPorHoraCentavos;
         }
 
         public void AdicionarVeiculo()
@@ -33,7 +32,7 @@ namespace DesafioFundamentos.Models
             }
 
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            vagas.Add(new Tuple<int, string, string>(indice, Console.ReadLine().ToUpper(), Convert.ToString(horaInicial)));
+            vagas.Add(new Tuple<int, string, TimeOnly>(indice, Console.ReadLine().ToUpper(), horaAtual));
 
             Console.WriteLine("Veículo Adicionado ");
         }
@@ -57,12 +56,31 @@ namespace DesafioFundamentos.Models
                 if (VagaVeiculo == -1)
                 {
                     Console.WriteLine("Placa não encontrada!");
-                    RemoverVeiculo();
+                    return;
                 }
                 else
                 {
+                    TimeOnly horaEntradaVeiculo = vagas[VagaVeiculo].Item3; // Pega o Objeto dentro da lista
+                    horaAtual = TimeOnly.FromDateTime(DateTime.Now);
 
-                    Console.WriteLine(VagaVeiculo);
+                    if (horaAtual.Hour > horaEntradaVeiculo.Hour && horaAtual.Hour - horaEntradaVeiculo.Hour >= 2) // Se o veiculo passou 1 h estacionado
+                    {
+                        int QuantidadeHoras = horaAtual.Hour - horaEntradaVeiculo.Hour;
+                        int QuantidadeMinutos = horaAtual.Minute - horaEntradaVeiculo.Minute;
+                        Console.WriteLine("bilada");
+                        Console.WriteLine($"O veículo passou {QuantidadeHoras} Hora(s) e {QuantidadeMinutos} Minuto(s) estacionado");
+                        Console.WriteLine($"Cliente irá pagar R$: " + (precoInicialCentavos / 100.0).ToString("F2"));
+                        Console.WriteLine($"O Cliente irá pagar R$: " + ((precoInicialCentavos + (precoPorHoraCentavos * QuantidadeHoras)) / 100).ToString("F2"));
+
+                    }
+                    else // Se o veículo passou até 1 hora
+                    {
+                        int QuantidadeHoras = horaAtual.Hour - horaEntradaVeiculo.Hour;
+                        int QuantidadeMinutos = horaAtual.Minute - horaEntradaVeiculo.Minute;
+                        Console.WriteLine($"O veículo passou {QuantidadeHoras}Hora(s) e {QuantidadeMinutos} Minuto(s) estacionado");
+                        Console.WriteLine($"Cliente irá pagar R$: " + (precoInicialCentavos / 100.0).ToString("F2"));
+                    }
+
                     Console.WriteLine($"Deseja remover o veículo de placa: {placa}?\n + 1 - Sim\n + 2 - Não");
                     if (Console.ReadLine() == "1")
                     {
@@ -72,7 +90,7 @@ namespace DesafioFundamentos.Models
                     else
                     {
                         Console.WriteLine("Veículo não removido!");
-                        RemoverVeiculo();
+                        return;
                     }
                 }
             }
