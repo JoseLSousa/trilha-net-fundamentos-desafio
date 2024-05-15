@@ -27,14 +27,6 @@ Se você deseja contribuir para este projeto, siga estas etapas:
 3. Faça suas alterações.
 4. Envie um pull request explicando suas mudanças.
 
-## © Licença
-
-Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
-
-## 👨‍💻 Autor
-
-- [Lucas Sousa](https://github.com/JoseLSousa)
-
 ---
 
  👋 Obrigado por visitar meu repositório, caso tenha interesse, visite meu GitHub.
