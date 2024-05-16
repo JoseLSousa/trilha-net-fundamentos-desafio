@@ -19,8 +19,6 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
             int indice;
             if (vagas.Count == 0)
             {
@@ -31,10 +29,27 @@ namespace DesafioFundamentos.Models
                 indice = vagas[vagas.Count - 1].Item1 + 1;
             }
 
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
-            vagas.Add(new Tuple<int, string, TimeOnly>(indice, Console.ReadLine().ToUpper(), horaAtual));
+            Console.WriteLine("Digite a placa do veículo para estacionar:\n Exemplo: ABC-1234");
+            string PlacaAdicionar = Console.ReadLine().ToUpper();
 
-            Console.WriteLine("Veículo Adicionado ");
+            if (PlacaAdicionar != "")
+            {
+                bool Placaexiste = vagas.Any(x => x.Item2 == PlacaAdicionar);
+                if (Placaexiste)
+                {
+                    Console.WriteLine("Placa já se encontra no sistema, verifique!");
+                }
+                else
+                {
+                    vagas.Add(new Tuple<int, string, TimeOnly>(indice, PlacaAdicionar, horaAtual));
+                    Console.WriteLine("Veículo Adicionado ");
+                }
+            }
+            else
+            {
+                Console.WriteLine("A placa não pode ser Vazia");
+
+            }
         }
 
         public void RemoverVeiculo()
@@ -80,7 +95,7 @@ namespace DesafioFundamentos.Models
                         Console.WriteLine($"Cliente irá pagar R$: " + (precoInicialCentavos / 100.0).ToString("F2"));
                     }
 
-                    Console.WriteLine($"Deseja remover o veículo de placa: {placa}?\n + 1 - Sim\n + 2 - Não");
+                    Console.WriteLine($"Deseja remover o veículo de placa: {placa}?\n1 - Sim\n2 - Não");
                     if (Console.ReadLine() == "1")
                     {
                         vagas.RemoveAt(VagaVeiculo);

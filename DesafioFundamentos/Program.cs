@@ -6,11 +6,7 @@ Console.OutputEncoding = System.Text.Encoding.UTF8;
 int precoInicialCentavos = 600;
 int precoPorHoraCentavos = 400;
 
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                  "O preço inicial é de: R$6.00\n" + "Após 1 Hora o valor cobrado será de R$4.00 por hora adicional");
 
-
-Console.WriteLine("Agora digite o preço por hora:");
 
 // Instancia a classe Estacionamento, já com os valores obtidos anteriormente
 Estacionamento es = new Estacionamento(precoInicialCentavos, precoPorHoraCentavos);
@@ -22,7 +18,9 @@ bool exibirMenu = true;
 while (exibirMenu)
 {
     Console.Clear();
-    Console.WriteLine("Digite a sua opção:");
+    Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
+                      "O preço inicial é de: R$6.00. Após 1 hora estacionado será cobrado R$4.00 por hora adicional");
+    Console.WriteLine("Digite a sua opção:\n");
     Console.WriteLine("1 - Cadastrar veículo");
     Console.WriteLine("2 - Remover veículo");
     Console.WriteLine("3 - Listar veículos");
